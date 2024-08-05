@@ -1,0 +1,3 @@
+abstract class ImageSliderIndecatorStates{}
+class InItIndecatorState extends ImageSliderIndecatorStates{}
+class ChangeImagendecatorState extends ImageSliderIndecatorStates{}
