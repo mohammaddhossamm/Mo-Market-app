@@ -18,34 +18,29 @@ class LayoutView extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>LayoutCubit(),
+          create: (context) => LayoutCubit(),
         ),
         BlocProvider(
           create: (context) =>
               HomeCubit(getIt.get<HomeRepoImplementation>())..getHomeData(),
         ),
-        
       ],
       child: BlocBuilder<LayoutCubit, LayoutStates>(
         builder: (context, state) {
-          var layoutCubit= LayoutCubit.get(context);
-           if (layoutCubit.navBarCurrentIndex == 0) {
-            if (kHomeModel == null){
+          var layoutCubit = LayoutCubit.get(context);
+          if (layoutCubit.navBarCurrentIndex == 0) {
+            if (kHomeModel == null) {
               HomeCubit.get(context).getHomeData();
             }
           }
           if (layoutCubit.navBarCurrentIndex == 2) {
-            if (kWishListModel == null){
-              HomeCubit.get(context).getHomeData().then( 
-                    (value) => WishlistCubit.get(context).getWishlist(),
-                  );
+            if (kWishListModel == null) {
+              WishlistCubit.get(context).getWishlist();
             }
           }
-          if(layoutCubit.navBarCurrentIndex == 1){
-            if(kCartModel == null){
-               HomeCubit.get(context).getHomeData().then( 
-                    (value) => CartCubit.get(context).getCartList(),
-                  );
+          if (layoutCubit.navBarCurrentIndex == 1) {
+            if (kCartModel == null) {
+              CartCubit.get(context).getCartList();
             }
           }
           return Scaffold(
