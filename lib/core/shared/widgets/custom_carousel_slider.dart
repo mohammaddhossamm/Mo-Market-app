@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
 
 class CustomCarouselSlider extends StatelessWidget {
@@ -7,21 +7,22 @@ class CustomCarouselSlider extends StatelessWidget {
     required this.items,
      this.height,
      this.autoPlay=true,
-    this.onPageChanged, this.carouselController, 
+    this.onPageChanged, 
+    this.carouselController, 
     this.intialPage=0,
-
+ 
   });
   final List<Widget>? items;
-  final CarouselController? carouselController;
+  final CarouselSliderController? carouselController;
   final int intialPage; 
   final double? height;
   final bool autoPlay;
-  final Function(int index, CarouselPageChangedReason reason)? onPageChanged;
+  final Function(int index,CarouselPageChangedReason reason)? onPageChanged;
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
       items: items,
-      carouselController: carouselController,
+      controller: carouselController,
       options: CarouselOptions(
         autoPlay: autoPlay,
         initialPage: intialPage,
